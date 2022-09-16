@@ -25,7 +25,7 @@
   package = "netlify-plugin-submit-sitemap"
 
 	[plugins.inputs]
-    baseUrl = "/"
+    baseUrl = "https://jovial-puppy-ce01a9.netlify.app/"
     sitemapPath = "/sitemap.xml"
     ignorePeriod = 0
     providers = [

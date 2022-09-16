@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://jovial-puppy-ce01a9.netlify.app/"
 canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
