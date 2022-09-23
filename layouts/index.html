@@ -7,7 +7,6 @@
     <div class="col-lg-9 col-xl-8 text-center">
       <p class="lead">{{ .Params.lead | safeHTML }}</p>
       <a class="btn btn-primary btn-lg px-4 mb-2" href="/docs/{{ if .Site.Params.options.docsVersioning }}{{ .Site.Params.docsVersion }}/{{ end }}prologue/introduction/" role="button">{{ i18n "get-started" }}</a>
-      <p class="meta">Open-source MIT Licensed. <a href="https://github.com/h-enk/doks">GitHub v{{ $data := getJSON "/package.json" }}{{ $data.version }}</a></p>
     </div>
   </div>
 </section>
@@ -19,30 +18,16 @@
     <div class="container">
       <div class="row justify-content-center text-center">
         <div class="col-lg-5">
-          <h2 class="h4">Security aware</h2>
-          <p>Get A+ scores on <a href="https://observatory.mozilla.org/analyze/doks.netlify.app">Mozilla Observatory</a> out of the box. Easily change the default Security Headers to suit your needs.</p>
+          <h2 class="h4">Para quem é este livro ?</h2>
+          <p>This book is primarily for students who are taking a course on the C++ language, for those who wish to self-study the C++ language, and for programmers who have experience with C and want to advance to C++. It could also prove useful to instructors of the C++ course who are looking for explanatory programming examples to add in their lectures.</p>
         </div>
         <div class="col-lg-5">
-          <h2 class="h4">Fast by default ⚡️</h2>
-          <p>Get 100 scores on <a href="https://googlechrome.github.io/lighthouse/viewer/?gist=59aafe464a68f8bc30b8e9a636d5b053">Google Lighthouse</a> by default. Doks removes unused css, prefetches links, and lazy loads images.</p>
+          <h2 class="h4">O foco deste livro</h2>
+          <p>The focus of this book is to provide a solid introduction to the C++ language and programming knowledge through a large number of practical examples and meaningful advice. It includes more than 500 exercises and examples of progressive difficulty to aid the reader in understanding the C++ principles and to see how concepts can materialize in code.</p>
         </div>
         <div class="col-lg-5">
-          <h2 class="h4">SEO-ready</h2>
-          <p>Use sensible defaults for structured data, open graph, and Twitter cards. Or easily change the SEO settings to your liking.</p>
-        </div>
-      </div>
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-5">
-          <h2 class="h4">Full text search</h2>
-          <p>Search your Doks site with FlexSearch. Easily customize index settings and search options to your liking.</p>
-        </div>
-        <div class="col-lg-5">
-          <h2 class="h4">Page layouts</h2>
-          <p>Build pages with a landing page, blog, or documentation layout. Add custom sections and components to suit your needs.</p>
-        </div>
-        <div class="col-lg-5">
-          <h2 class="h4">Dark mode</h2>
-          <p>Switch to a low-light UI with the click of a button. Change colors with variables to match your branding.</p>
+          <h2 class="h4">Mais 500 de exercícios </h2>
+          <p>The examples are designed to be short, concrete, and substantial, quickly giving the reader the ability to understand how to apply correctly and efficiently the features of the C++ language and to get a solid programming know-how. Rest assured that if you are able to understand this book’s examples and solve the exercises, you can safely go on to edit larger programs, you will be able to develop your own applications, and you will have certainly established a solid fundamental conceptual and practical background to expand your knowledge and skills.</p>
         </div>
       </div>
     </div>
@@ -59,3 +44,4 @@
   </div>
 </section>
 {{ end }}
+
