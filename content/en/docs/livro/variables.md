@@ -154,5 +154,82 @@ int main()
 ```
 Embora a resposta óbvia seja Sim, o programa gerou Não ? Surpresa! E o motivo se deve à capacidade limitada do tipo __float__ para representar precisamente o número 3.1. Como veremos mais tarde, por padrão, o tipo de uma floating constant (por exemplo, 3.1) é __double__.
 
+Ao usar variáveis de floating-point em comparações é mais seguro declará-las como __double__ ou __long double__ em vez de __float__. Por exemplo, se você usar esses types, o programa provavelmente exibirá Sim. Mas, em geral, quando você testa o valor de uma variável de floating-point para igualdade, nunca pode-se ter certeza sobre o resultado da comparação, pois existe a possibilidade de que o número não possa ser representado com a precisão do type. Se puder ser representado, o resultado da comparação é válido. Por exemplo, se ao invés de 3.1 compararmos com 0.5, a comparação é bem sucedida e o programa exibe Sim, pois o número 0.5 pode ser representado com a precisão do tipo __float__ sem perder dígitos decimais.
 
+Em geral, se você tiver que testar dois valores de floating-point para igualdade, não escreva __if__(a == b), porque não é seguro. Você pode inserir um bug difícil de rastrear como eu fiz uma vez. Uma abordagem simples, porém, mais segura é verificar não se os valores são exatamente os mesmos, mas se a diferença é muito pequena. Por exemplo, poderíamos escrever: __if__(fabs(a-b) <= accuracy). fabs() que é uma função da biblioteca declarada em *cmath* e calcula o valor absoluto do argumento, ou seja, a diferença entre *a* e *b*. Para o valor de *accuracy*, você pode escolher qualquer valor que considere que se aproxime de sua igualdade.
 
+Resumindo, como as variáveis floating-point podem armazenar apenas um certo número de dígitos significativos, e quaisquer dígitos significativos adicionais são perdidos, esteja ciente da possibilidade de erros de arredondamento que podem afetar o comportamento do seu programa.
+
+Você pode pensar que esta discussão poderia ocorrer mais tarde e não tão cedo, você pode estar certo, mas prefiro discutir agora que estou explicando sobre os types e chamar sua atenção aqui, em vez de adicioná-lo em outro lugar que você pode não notar.
+
+*Para simplificar, fiz algumas suposições ao longo deste livro: as características de type suportadas pelo compilador são aquelas mostradas na Tabela 2.1, que um byte contém oito bits (sim, pode ter mais), e o sistema usa o método mais comum para representar signed numbers, ou seja, os dois complementos. Além disso, presumo que o underlying character seja a do conjunto ASCII. Ao usar valores de floating-points em nossos programas, usaremos variáveis __float__ e __double__, para nos familiarizarmos com os dois tipos.*
+
+Antes de concluir esta seção, gostaria de salientar que C++ suporta *static type control* no sentido de que a validade do uso de type é feita durante a compilação e não durante a execução do programa. Ou seja, se fizermos uma ação que o type não suporta, o compilador irá gerar uma mensagem de erro. Static type control é fundamental para o uso eficaz da linguagem, pois os erros podem ser detectados antes de executar o programa. Mais adiante neste livro veremos que podemos usar os types básicos para criar outros types (por exemplo, pointers) usando operadores. Também aprenderemos a criar nossos próprios types, como estruturas e classes.
+
+### Declarando Variáveis
+
+As variáveis devem ser declaradas antes de serem usadas no programa. A declaração informa ao compilador o nome da variável e seu tipo. Já vimos alguns exemplos de declarações na seção anterior, e para declarar uma variável escrevemos:
+
+```c++
+data_type = nome_da_variável;
+```
+
+O *nome_da_variável* é claramente o nome da variável e o *data_type* seu tipo. Como dissemos, C++ é uma linguagem de tipagem estática (statically typed language), no sentido de que o compilador deve conhecer o tipo de cada entidade (por exemplo, a variável) no momento de seu uso. O tipo da entidade determina as operações que podemos realizar nela. Por exemplo, para declarar uma variável inteira (integer) chamada i e uma variável floating-point chamada j, escrevemos:
+
+```c++
+int i;
+float j;
+```
+Variáveis do mesmo tipo podem ser declaradas na mesma linha, separadas por vírgula. Por exemplo, em vez de declarar as variáveis i, j e k em três linhas diferentes:
+
+```c++
+int i;
+int j;
+int k;
+```
+Podemos declará-las na mesma linha e salvar espaço:
+
+```c++
+int i, j, k;
+```
+Quando a variável for declarada o compilador reserva na memória os bytes necessários para armazenar seu valor. Por exemplo, conforme mostrado na Tabela 2.1, o tipo __char__ reserva um byte, enquanto o tipo __double__ reserva oito bytes. Além disso, o compilador salva o nome da variável e seu endereço de memória, então, sempre que uma variável é utilizada dentro do programa, o compilador utiliza o nome para recuperar o endereço correspondente e acessar seu conteúdo. Por exemplo, com a declaração *i = 10;* o compilador armazena o valor 10 no local de memória correspondente ao nome *i*. Como veremos no Capítulo 8, podemos usar o operador *&* para recuperar o endereço de memória de *i*. Note que o valor 10, como qualquer outro valor ( float, character, …), é armazenado na memória em binário como uma sequência de bits 0 e 1.
+
+A seguir, veremos que podemos especificar mais propriedades ao declarar uma variável, como o qualificador de tipo e a classe de armazenamento (discutiremos sobre isso no Capítulo 11). Embora possam aparecer em qualquer ordem, a prática típica é especificar primeiro a classe de armazenamento, depois o qualificador e, por último, o data types. Por exemplo:
+
+```c++
+static const unsigned int a;
+```
+
+Até chegarmos ao Capítulo 11, vamos declarar todas as nossas variáveis dentro de *main()*. Essas variáveis são chamadas de *automatic*, no sentido de que sua vida útil termina quando o programa é finalizado. Seu valor inicial é indeterminado (ou seja, garbage), o valor inicial de uma variável é o que quer que esteja em seu local de memória. Por exemplo, o programa a seguir exibe o valor inicial de *i*:
+
+```c++
+#include <iostream> // Exemplo 2.2.
+int main()
+{
+  int i;
+  std::cout << i;
+  return 0;
+}
+```
+
+Em geral, usar variáveis que não foram inicializadas é muito perigoso e pode fazer com que o programa se comporte de forma imprevisível. Muito provavelmente, o compilador irá avisá-lo de tal uso, mas você também deve ter cuidado.
+
+Uma variável pode ser declarada em qualquer lugar no programa, muitos preferem declarar a variável quando ela está para ser usada. Em todo caso, eu prefiro declarar todas as variáveis no começo de cada função, assim, quem ler o código pode rapidamente ter uma idéia da complexidade da função e os tipos de variáveis que ela usa. Também acredito ser mais conveniente que todas elas estejam em um único lugar, dessa forma quando você quiser ver o tipo da variável você não terá que procurar pelo seu ponto de declaração. Por outro lado, existem casos em que é mais eficiente declarar a variável após verificar certas condições. Segue um exemplo para evitar uma alocação de memória desnecessária: 
+
+```c++
+void f(int a)
+{
+  if (a == 0)
+      return;
+  int arr[10000];
+  /* Primeiro a condição é verificada e então a variável arr é declarada. 
+  A variável arr é um array e, como veremos no capítulo 7, o compilador reserva memória para 10.000 integers quando declarado. 
+  Essa memória será reservada somente se necessário, ou seja, se a condição for falsa. */
+}
+```
+Preferencialmente, eu usei um espaço branco para separar as declarações das variáveis feitas no inicio da função do restante do código. Em geral, recuo, alinhamento, espaços e linhas em branco melhoram a legibilidade do programa, eu sempre recuo declarations and statements para deixar claro que elas estão inseridas dentro da função. Além disso, uso linhas em branco para dividir o programa em blocos lógicos, tornando mais fácil para o leitor entender a estrutura do programa.
+
+Antes de acabarmos esta seção vamos brevemente explicar os termos *declaração* e *definição*. Uma declaração é um statement que introduz um nome (variável) em um escopo; uma declaração que reserva memória é chamada definição, assim, quando digitamos:
+__int__ i; esta declaração também é uma definição já que memória é reservada para a variável. No entanto, nem todas as declarações são definições; e veremos tais declarações quando discutirmos sobre variáveis __extern__ no Capítulo 11.
+
+### Atribuição de Valores
