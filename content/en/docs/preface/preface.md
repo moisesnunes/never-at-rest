@@ -2,13 +2,14 @@
 title: "Prefácio"
 description: "Tradução - Moises Nunes"
 lead: "Tradução - Moises Nunes"
-date: 2020-10-06T08:48:57+00:00
-lastmod: 2020-10-06T08:48:57+00:00
+date: 2022-09-29T18:01:44-03:00
+lastmod: 2022-09-29T18:01:44-03:00
 draft: false
 images: []
 menu:
   docs:
-    parent: "prologue"
+    parent: ""
+    identifier: "preface-d274bd309e181cd36f6ebb82841646a2"
 weight: 100
 toc: true
 ---
@@ -46,6 +47,3 @@ Gostaria de agradecer a S. Stamatiadis, N. Tselikas e, particularmente, I. Karal
 ### Sobre o Autor
 
 Dr. George S. Tselikis recebeu tanto seu Dipl.–Ing. Doutorado pela Escola de Engenharia Elétrica e de Computação da Universidade Técnica Nacional de Atenas (NTUA). Em 1998, ingressou no Departamento de Engenharia Elétrica da Universidade de Columbia, em Nova York, e trabalhou como pesquisador associado de pós-doutorado. Foi membro fundador da 4Plus S.A. (1999–2014), onde trabalhou no desenvolvimento de protocolos e serviços de rede. Ele tem uma longa experiência de trabalho na área de telecomunicações, e seus principais interesses de pesquisa se concentram na especificação de software, desenvolvimento e teste de protocolos e serviços de rede em redes cabeadas e sem fio. Participou em muitos projetos de investigação europeus e colaborou com várias empresas da indústria das telecomunicações. Desde 2004, ele é professor visitante em várias universidades gregas ministrando cursos relacionados a tecnologias de rede, protocolos e comunicações e linguagens de programação.
-
-
-

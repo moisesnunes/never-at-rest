@@ -2,15 +2,15 @@
 title: "Variáveis, Constantes e Conversões Aritméticas"
 description: "Neste capítulo, aprenderemos os basic types de dados e veremos como podemos usá-los para declarar variáveis em nosso programa. À medida que avançamos para os próximos capítulos, aprenderemos como construir composite types baseados nos basic types, como arrays e structures. Este capítulo também discute conversões aritméticas e variáveis constantes."
 lead: "Neste capítulo, aprenderemos os basic types de dados e veremos como podemos usá-los para declarar variáveis em nosso programa. À medida que avançamos para os próximos capítulos, aprenderemos como construir composite types baseados nos basic types, como arrays e structures. Este capítulo também discute conversões aritméticas e variáveis constantes."
-date: 2022-09-23T13:43:16-03:00
-lastmod: 2022-09-23T13:43:16-03:00
+date: 2022-09-29T17:55:26-03:00
+lastmod: 2022-09-29T17:55:26-03:00
 draft: false
 images: []
 menu:
   docs:
     parent: ""
-    identifier: "variables-5ed808dcc26868cb2b47f4c0908980e6"
-weight: 200
+    identifier: "variables-48887c8ebc845ec8cdf0b02620d09696"
+weight: 20
 toc: true
 ---
 

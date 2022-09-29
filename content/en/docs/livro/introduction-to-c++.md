@@ -2,15 +2,15 @@
 title: "Introdução ao C++"
 description: "Antes de entrarmos nos detalhes da linguagem C++, este capítulo apresenta, resumidamente, sua história, evolução e pontos fortes. Em seguida, discutiremos alguns conceitos básicos que precisaremos para escrever nosso primeiro programa."
 lead: "Antes de entrarmos nos detalhes da linguagem C++, este capítulo apresenta, resumidamente, sua história, evolução e pontos fortes. Em seguida, discutiremos alguns conceitos básicos que precisaremos para escrever nosso primeiro programa."
-date: 2022-09-23T13:20:25-03:00
-lastmod: 2022-09-23T13:20:25-03:00
+date: 2022-09-29T17:51:00-03:00
+lastmod: 2022-09-29T17:51:00-03:00
 draft: false
 images: []
 menu:
   docs:
     parent: ""
-    identifier: "introduction-to-c++-22dafd2c7a6f2d1e021feae6599180e5"
-weight: 100
+    identifier: "introduction-to-c++-ea25fd5c09f1d02a7aed22e261e981f6"
+weight: 10
 toc: true
 ---
 
