@@ -222,9 +222,9 @@ void f(int a)
   if (a == 0)
       return;
   int arr[10000];
-  /* Primeiro a condição é verificada e então a variável arr é declarada. 
-  A variável arr é um array e, como veremos no capítulo 7, o compilador reserva memória para 10.000 integers quando declarado. 
-  Essa memória será reservada somente se necessário, ou seja, se a condição for falsa. */
+  // Primeiro a condição é verificada e então a variável arr é declarada. 
+  // A variável arr é um array e, como veremos no capítulo 7, o compilador reserva memória para 10.000 integers quando declarado. 
+  // Essa memória será reservada somente se necessário, ou seja, se a condição for falsa. 
 }
 ```
 Preferencialmente, eu usei um espaço branco para separar as declarações das variáveis feitas no inicio da função do restante do código. Em geral, recuo, alinhamento, espaços e linhas em branco melhoram a legibilidade do programa, eu sempre recuo declarations and statements para deixar claro que elas estão inseridas dentro da função. Além disso, uso linhas em branco para dividir o programa em blocos lógicos, tornando mais fácil para o leitor entender a estrutura do programa.

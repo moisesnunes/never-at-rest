@@ -77,7 +77,7 @@ Depois de se familiarizar com o C++, você pode abrir os arquivos incluídos (po
 
 Cada programa em C++ deve conter uma função chamada *main()*. A palavra *main()* deve ser escrita em caracteres minúsculos. O código do programa, ou então o corpo da função, deve estar entre chaves ({}). Um statement é um comando que será executado quando o programa for executado. Os statements são normalmente escritas em linhas separadas e, quase sempre, cada statement termina com um ponto e vírgula. Embora o compilador não se importe com o layout do programa, a indentação e o espaçamento adequados tornam seu programa mais fácil de ler. Braces(chaves) são usadas para agrupar declarações e instruções em um bloco ou então uma instrução composta que o compilador trata como uma. Além das funções, usaremos chaves em instruções de controle e loops.
 
-O *main()*, como o próprio nome indica, é a função principal de qualquer programa. Falaremos sobre funções no Capítulo 11. Simplificando, uma função é uma série de declarações e comandos que foram agrupados e receberam um nome (por exemplo, main()). Uma função é chamada pelo seu nome para realizar uma tarefa específica e pode, opcionalmente, retornar um valor. A função *main()* é chamada automaticamente pelo sistema operacional quando o programa é executado. A execução do programa começa com a primeira instrução de *main()* e termina quando a última instrução de *main()* é executada, a menos que uma instrução de saída (por exemplo, __return__) seja chamada anteriormente. Obviamente, se ocorrer um erro grave durante a execução do programa, como uma divisão por 0, o programa terminará de forma anormal. A palavra-chave __int__ indica que *main()* deve retornar um integer ao sistema operacional quando terminar. Esse valor é retornado com a instrução __return__; o valor 0 indica terminação normal, enquanto valores diferentes de zero indicam algum tipo de falha. Esta declaração de *main()* é bastante comum. No entanto, você pode ver outras declarações, como:
+O *main()*, como o próprio nome indica, é a função principal de qualquer programa. Falaremos sobre funções no Capítulo 11. Simplificando, uma função é uma série de declarações e comandos que foram agrupados e receberam um nome (por exemplo, main()). Uma função é chamada pelo seu nome para realizar uma tarefa específica e pode, opcionalmente, retornar um valor. A função *main()* é chamada automaticamente pelo sistema operacional quando o programa é executado. A execução do programa começa com a primeira instrução de *main()* e termina quando a última instrução de *main()* é executada, a menos que uma instrução de saída (por exemplo, __return__ ) seja chamada anteriormente. Obviamente, se ocorrer um erro grave durante a execução do programa, como uma divisão por 0, o programa terminará de forma anormal. A palavra-chave __int__ indica que *main()* deve retornar um integer ao sistema operacional quando terminar. Esse valor é retornado com a instrução __return__; o valor 0 indica terminação normal, enquanto valores diferentes de zero indicam algum tipo de falha. Esta declaração de *main()* é bastante comum. No entanto, você pode ver outras declarações, como:
 
 ```c++
 void main
@@ -144,14 +144,14 @@ int main()
 C++ também suporta o uso de / * * / para inserir comentários. O compilador ignora qualquer coisa incluída entre o / * * /. Se um comentário se estender por mais de uma linha, podemos usar // no início de cada linha ou / * * /. É uma questão de preferência pessoal. Minha preferência é usar // para comentários de uma linha, enquanto usar / * * / para várias linhas. Por exemplo:
 
 ```s
-/* O propósito do primeiro programa é exibir uma na tela. */
+/ * O propósito do primeiro programa é exibir uma na tela. * /
 ```
 Comentários não corretos não são permitidos, o código a seguir é ilegal e o compilador gerará uma mensagem de erro:
 
 ```s
-/*
-/* Outro comentário. */
-*/
+/ *
+/ * Outro comentário. * /
+* /
 ```
 Adicionar comentários é uma obrigação ao escrever programas. Um programa explicativo economiza tempo e esforço quando você precisa modificá-lo e o tempo de outras pessoas que podem precisar entender e evoluir seu programa. A pessoa que provavelmente se beneficiará dos comentários é você, quando voltar a esse código em algum momento no futuro e não se lembrar exatamente por que escreveu o código da maneira que fez. Na verdade, já me arrependi muitas vezes no passado quando em partes não óbvias dos meus programas eu não adicionava comentários, porque achava que sempre entenderia o que estava escrevendo. Eu estava errado e paguei o preço com o tempo que perdi para entender o que fiz.
 
@@ -165,21 +165,21 @@ using std::cout;
 int main()
 {
 //   cout << "That is ";
-     cout << "the first"; /* Um programa com múltiplos outputs
-     cout << " trap"; /* Esse é o último. */
+     cout << "the first"; / * Um programa com múltiplos outputs
+     cout << " trap"; / * Esse é o último. * /
 return 0;
 }
 ```
-Você notou o // e respondeu a primeira *the first trap*? Sim, mas você não percebeu que o comentário que começa com /* na segunda linha termina no final da terceira linha. Portanto, o programa gera: *the first*.
+Você notou o / / e respondeu a primeira *the first trap*? Sim, mas você não percebeu que o comentário que começa com / * na segunda linha termina no final da terceira linha. Portanto, o programa gera: *the first*.
 
 ```c++
 #include <iostream> // Example 1.1
 using std::cout;
 int main()
 {
-//   cout << "That is ";
-     cout << "the first"; /* Um programa com múltiplos outputs
-     cout << " trap"; /* Esse é o último. */
+//   cout << "That is "; 
+     cout << "the first"; / * Um programa com múltiplos outputs
+     cout << " trap"; / * Esse é o último. * /
 return 0;
 }
 ```
