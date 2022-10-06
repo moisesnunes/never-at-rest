@@ -10,7 +10,7 @@ menu:
   docs:
     parent: ""
     identifier: "introduction-to-c++-ea25fd5c09f1d02a7aed22e261e981f6"
-weight: 10
+weight: 2
 toc: true
 ---
 
@@ -143,12 +143,12 @@ int main()
 
 C++ também suporta o uso de / * * / para inserir comentários. O compilador ignora qualquer coisa incluída entre o / * * /. Se um comentário se estender por mais de uma linha, podemos usar // no início de cada linha ou / * * /. É uma questão de preferência pessoal. Minha preferência é usar // para comentários de uma linha, enquanto usar / * * / para várias linhas. Por exemplo:
 
-```s
-/ * O propósito do primeiro programa é exibir uma na tela. * /
+```bash
+/ * O propósito do primeiro programa é exibir uma mensagem na tela e depois finalizar. * /
 ```
 Comentários não corretos não são permitidos, o código a seguir é ilegal e o compilador gerará uma mensagem de erro:
 
-```s
+```bash
 / *
 / * Outro comentário. * /
 * /
@@ -171,20 +171,6 @@ return 0;
 }
 ```
 Você notou o / / e respondeu a primeira *the first trap*? Sim, mas você não percebeu que o comentário que começa com / * na segunda linha termina no final da terceira linha. Portanto, o programa gera: *the first*.
-
-```c++
-#include <iostream> // Example 1.1
-using std::cout;
-int main()
-{
-//   cout << "That is "; 
-     cout << "the first"; / * Um programa com múltiplos outputs
-     cout << " trap"; / * Esse é o último. * /
-return 0;
-}
-```
-![resultado](./the-first.png)
-
 ___
 
 {{< alert icon="⚠️" text="Cuidado ao usar / * * / para adcionar comentários, o compilador vai ignorar tudo que estiver entre eles."/>}}

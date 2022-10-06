@@ -10,7 +10,7 @@ menu:
   docs:
     parent: ""
     identifier: "variables-48887c8ebc845ec8cdf0b02620d09696"
-weight: 20
+weight: 3
 toc: true
 ---
 
@@ -233,3 +233,108 @@ Antes de acabarmos esta seção vamos brevemente explicar os termos *declaraçã
 __int__ i; esta declaração também é uma definição já que memória é reservada para a variável. No entanto, nem todas as declarações são definições; e veremos tais declarações quando discutirmos sobre variáveis __extern__ no Capítulo 11.
 
 ### Atribuição de Valores
+
+A maneira tradicional de atribuir um valor a uma variável é usando o operador de atribuição =. Por exemplo, o código a seguir atribui o valor 2 a *a*:
+
+```c++
+int a;
+a = 2;
+```
+Alternativamente, uma variável pode ser inicializada junto com sua declaração:
+
+```c++
+int a = 2;
+```
+Podemos também escrever:
+
+```c++
+int a = {2};
+```
+Como veremos nos próximos capítulos, a sintaxe {} entre colchetes geralmente é usada para inicializar os elementos de uma matriz ou estrutura. As chaves podem ser deixadas vazias, nesse caso a variável é inicializada com 0. Também podemos inicializar mais de uma variável do mesmo tipo quando declarada. Por exemplo, a instrução a seguir declara as variáveis a, b, c e d e inicializa as três primeiras com os valores 2, 3 e 4, respectivamente. A variável d é inicializada com um garbage value.
+
+```c++
+int a = 2, b = 3, d, c = 4;
+```
+Poderíamos até escrever:
+
+```c++
+int a = 2, b = a + 1, d, c = b + 1;
+```
+As atribuições ocorrem da esquerda para a direita, o que significa que primeiro *a* se torna 2, depois *b* se torna 3 e então *c* se torna 4. Temos outra maneira:
+
+```c++
+int a(2), b(a+1), c(a+2);
+```
+Respectivamente, seus valores se tornam 2, 3 e 4. Como você pode ver, existem muitas alternativas para inicializar uma variável, para melhor legibilidade, minha preferência é inicializar cada variável em uma statement separado logo após sua declaração.
+
+Em uma atribuição, a expressão do lado direito pode ser um número, uma variável ou uma expressão mais complexa como uma expressão que usa operadores aritméticos. O valor da expressão é avaliado primeiro e depois atribuído à variável. Além disso, a mesma variável pode ser usada em ambos os lados de =. Por exemplo:
+
+```c++
+int a = 2;
+a = a - 5; // a se trona menos -3
+ ```
+O valor atribuído a uma variável deve estar dentro do intervalo de seu type. A afirmação:
+
+```c++
+unsigned char a = 260;
+```
+não faz com que *a* seja igual a 260 (100000100 em binário) porque o valor máximo que pode ser armazenado em um variável __unsigned char__ é 255. Apenas os 8 bits inferiores serão armazenados, ou seja, 00000100, e a se tornará 4. Em geral, para tipos unsigned o valor atribuído é o restante  unsigned da divisão do inteiro (por exemplo, 260) por 2n, no qual n é o número de bits necessários para representar o tipo (por exemplo, 8). Se um valor fora dos limites for atribuído a um signed type o resultado será indefinido. Observe que o compilador provavelmente não exibirá uma mensagem para avisá-lo de um overflow. Portanto, sempre preste atenção aos intervalos de suas variáveis!
+
+```c++
+short int s = 32767; // O valor máximo é atribuído (assigned).
+s = s+1; // O novo valor de s é indefinido. Ele pode ser -32767 em um sistema e algo differente em outro. 
+```
+O C++11 oferece suporte à inicialização com uma lista de valores dentro de { }, sem usar o sinal de =.
+
+```c++
+int a{5}; // a se torna 5;
+vector<int> v{1, 2, 3}; // Inicialização de um vector com inteiros. Falaremos sobre vectors no Ch.7.
+```
+Uma vantagem desse formato é que o compilador informa ao programador sobre conversões que podem causar perda de informações.
+
+```c++
+int = 5.2; // a se torna 5, o compilador pode não informar ao programador sobre a perda de informação.
+
+int a{5.2}; // O compilador informa ao programador sobre a conversão do float number para um integer.
+```
+Uma lista de valores vazia {} é usada para atribuir um valor padrão. Por exemplo, o valor padrão para um tipo integer ou float é 0, e para pointers (veremos no Capítulo 8) __nullptr__:
+
+```c++
+int a{}; // a se torna 0;
+
+char *p{}; // p se trona nullptr.
+```
+### Especificadores de tipo
+
+Como vimos quando uma variável é declarada seu tipo (type) tem que ser especificado. O C++11 fornece maneiras alternativas de especificar o tipo usando os identificadores __auto__ e __decltype__.
+Ao usar a palavra __auto__ não é necessário declarar o tipo da variável (por exemplo, __int__), desde que o compilador possa deduzi-lo pelo valor de inicialização.
+
+```c++
+auto a = 5; // O type de a é int.
+auto d = 1.2; // O type de d é double.
+auto v = i+j; // O type de v é inferido do resultado de i+j. Se i e j são double o tipo de v é double.
+auto k = f(); // O type de k é o type do retorno de f().
+```
+Para declarações simples, como as acima, não existe benefício em usar __auto__. O identificador __auto__ é muito útil para simplificar declarações complicadas, como as de programação genérica, na qual a identificação do tipo pode ser longa, complexa e difícil de encontrar. Nesses casos, é muito conveniente usar __auto__, pois em vez de tentar encontrar o tipo, deixamos o compilador fazer isso. Veremos esses exemplos no Capítulo 26. Para inferir o tipo uma variável __auto__ deve ser inicializada quando declarada, ou seja, é um erro escrever:
+
+```c++
+auto a;
+```
+Assim como os simple types, podemos usar __auto__ para declarar múltiplas variáveis. Os valores iniciais devem corresponder ao mesmo tipo. Por exemplo:
+
+```c++
+auto a = 5, b = 6; // Tudo certo, o tipo de a e b é int.
+auto c = 5, d = 6.12; // Errado, os tipos c e d são inconsistentes. Primeiro int, depois double.
+```
+Quanto ao __decltype__ você entenderá melhor seu uso quando falarmos de funções e referências. Continue lendo para ter uma ideia. Assim como no __auto__ o uso usual de __decltype__ é na programação genérica. Às vezes podemos querer declarar uma variável com um type que o compilador deduz de uma expressão. Ela pode ser uma variável simples ou algo mais complexo, tal como o valor que um função pode retornar. Para esses casos o C++11 introduziu o identificador __decltype__, que retorna o tipo da expressão:
+
+```c++
+int i, j;
+int& r = i;
+const int c = i;
+
+decltype (i) d1; // O type de d1 é int.
+decltype (r) d2 = j; // O type de d2 é referência e se refere a j.
+decltype (r) d3; // Errado, já que o type d3 é referência ele dever ser inicializado.
+decltype (c) d4 = j; // O type de d4 é const int.
+```
